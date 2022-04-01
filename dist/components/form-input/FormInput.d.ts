@@ -16,6 +16,7 @@ interface Props {
     inputId: string;
     inputType?: "button" | "checkbox" | "color" | "date" | "datetime-local" | "email" | "file" | "hidden" | "image" | "month" | "number" | "password" | "radio" | "range" | "reset" | "search" | "submit" | "tel" | "text" | "time" | "url" | "week";
     inputMode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search";
+    disabled?: boolean;
     placeholder: string;
     defaultValue?: string;
     mask?: string;

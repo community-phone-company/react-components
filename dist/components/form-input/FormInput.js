@@ -70,6 +70,7 @@ class FormInput extends react_1.default.Component {
         }
     }
     render() {
+        var _a;
         return (react_1.default.createElement("div", { className: this.getContainerClasses() },
             react_1.default.createElement("label", { className: this.getLabelClasses(), htmlFor: this.props.inputId },
                 react_1.default.createElement("span", null, this.props.label),
@@ -78,7 +79,7 @@ class FormInput extends react_1.default.Component {
                         return (react_1.default.createElement("span", { className: "ml-auto label-optional" }, this.props.labelOptional));
                     }
                 })()),
-            react_1.default.createElement("input", { id: this.props.inputId, type: this.props.inputType, inputMode: this.props.inputMode, className: this.getInputClasses(), placeholder: this.props.placeholder, value: this.state.value, autoComplete: this.props.autocomplete ? "on" : "new-password", onInput: this.onInput, onFocus: () => {
+            react_1.default.createElement("input", { id: this.props.inputId, type: this.props.inputType, inputMode: this.props.inputMode, disabled: (_a = this.props.disabled) !== null && _a !== void 0 ? _a : undefined, className: this.getInputClasses(), placeholder: this.props.placeholder, value: this.state.value, autoComplete: this.props.autocomplete ? "on" : "new-password", onInput: this.onInput, onFocus: () => {
                     this.props.onFocusChanged && this.props.onFocusChanged(true);
                 }, onBlur: () => {
                     this.props.onFocusChanged && this.props.onFocusChanged(false);
