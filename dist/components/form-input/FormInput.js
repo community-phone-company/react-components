@@ -20,7 +20,9 @@ class FormInput extends react_1.default.Component {
         this.getContainerClasses = () => {
             return [
                 "form__group",
-                this.props.mb0 ? "mb-0" : ""
+                "form__group_input",
+                this.props.mb0 ? "mb-0" : "",
+                this.props.mb16 ? "mb-16" : ""
             ].join(" ");
         };
         this.getLabelClasses = () => {

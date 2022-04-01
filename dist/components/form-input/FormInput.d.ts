@@ -21,6 +21,7 @@ interface Props {
     mask?: string;
     autocomplete?: boolean;
     mb0?: boolean;
+    mb16?: boolean;
     dropdownItems?: string[];
     dropdownItemsVisible?: boolean;
     error?: boolean;

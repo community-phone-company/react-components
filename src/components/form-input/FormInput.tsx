@@ -98,7 +98,9 @@ export default class FormInput extends React.Component<Props, State> {
     private getContainerClasses = () => {
         return [
             "form__group",
-            this.props.mb0 ? "mb-0" : ""
+            "form__group_input",
+            this.props.mb0 ? "mb-0" : "",
+            this.props.mb16 ? "mb-16" : ""
         ].join(" ");
     }
 
@@ -157,6 +159,7 @@ interface Props {
     mask?: string,
     autocomplete?: boolean,
     mb0?: boolean,
+    mb16?: boolean,
     dropdownItems?: string[],
     dropdownItemsVisible?: boolean,
     error?: boolean,
