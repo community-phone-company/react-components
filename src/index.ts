@@ -1,5 +1,5 @@
-import TestComponent from "./components/test-component/TestComponent"
+import FormInput from "./components/form-input/FormInput"
 
 export {
-    TestComponent
+    FormInput
 }
