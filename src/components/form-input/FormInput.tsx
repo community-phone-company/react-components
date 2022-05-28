@@ -2,6 +2,7 @@ import React from "react";
 import Inputmask from "inputmask";
 
 export default class FormInput extends React.Component<Props, State> {
+    
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -46,6 +47,7 @@ export default class FormInput extends React.Component<Props, State> {
                     value={this.state.value}
                     autoComplete={this.props.autocomplete ? "on" : "new-password"}
                     onInput={this.onInput}
+                    onPaste={this.onInput}
                     onFocus={() => {
                         this.props.onFocusChanged && this.props.onFocusChanged(
                             true
@@ -56,6 +58,7 @@ export default class FormInput extends React.Component<Props, State> {
                             false
                         );
                     }}
+                    {...this.props.overrideInputSettings}
                 />
 
                 {this.props.dropdownItems && this.props.dropdownItems.length && (
@@ -100,8 +103,8 @@ export default class FormInput extends React.Component<Props, State> {
         return [
             "form__group",
             "form__group_input",
-            this.props.mb0 ? "mb-0" : "",
-            this.props.mb16 ? "mb-16" : ""
+            this.props.fluid ? "form__group_fluid" : "",
+            this.props.mbValue ? `mb-${this.props.mbValue}` : ""
         ].join(" ");
     }
 
@@ -160,15 +163,17 @@ interface Props {
     defaultValue?: string,
     mask?: string,
     autocomplete?: boolean,
-    mb0?: boolean,
-    mb16?: boolean,
+    mbValue?: number | string,
+    fluid?: boolean,
+    maxLength?: number,
     dropdownItems?: string[],
     dropdownItemsVisible?: boolean,
     error?: boolean,
     errorMessage?: string,
     onInput?: (value: string, noMask: string) => void,
     onFocusChanged?: (isActive: boolean) => void,
-    onSelectedDropdownItem?: (index: number) => void
+    onSelectedDropdownItem?: (index: number) => void,
+    overrideInputSettings?: React.HTMLAttributes<HTMLInputElement>
 }
 
 interface State {
