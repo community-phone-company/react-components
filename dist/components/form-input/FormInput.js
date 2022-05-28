@@ -21,8 +21,8 @@ class FormInput extends react_1.default.Component {
             return [
                 "form__group",
                 "form__group_input",
-                this.props.mb0 ? "mb-0" : "",
-                this.props.mb16 ? "mb-16" : ""
+                this.props.fluid ? "form__group_fluid" : "",
+                this.props.mbValue ? `mb-${this.props.mbValue}` : ""
             ].join(" ");
         };
         this.getLabelClasses = () => {
@@ -79,11 +79,11 @@ class FormInput extends react_1.default.Component {
                         return (react_1.default.createElement("span", { className: "ml-auto label-optional" }, this.props.labelOptional));
                     }
                 })()),
-            react_1.default.createElement("input", { id: this.props.inputId, type: this.props.inputType, inputMode: this.props.inputMode, disabled: (_a = this.props.disabled) !== null && _a !== void 0 ? _a : undefined, className: this.getInputClasses(), placeholder: this.props.placeholder, value: this.state.value, autoComplete: this.props.autocomplete ? "on" : "new-password", onInput: this.onInput, onFocus: () => {
+            react_1.default.createElement("input", Object.assign({ id: this.props.inputId, type: this.props.inputType, inputMode: this.props.inputMode, disabled: (_a = this.props.disabled) !== null && _a !== void 0 ? _a : undefined, className: this.getInputClasses(), placeholder: this.props.placeholder, value: this.state.value, autoComplete: this.props.autocomplete ? "on" : "new-password", onInput: this.onInput, onPaste: this.onInput, onFocus: () => {
                     this.props.onFocusChanged && this.props.onFocusChanged(true);
                 }, onBlur: () => {
                     this.props.onFocusChanged && this.props.onFocusChanged(false);
-                } }),
+                } }, this.props.overrideInputSettings)),
             this.props.dropdownItems && this.props.dropdownItems.length && (react_1.default.createElement("ul", { className: "form__dropdown" }, this.props.dropdownItems.map((item, index) => (react_1.default.createElement("li", { className: "form__dropdown-item", key: item, onClick: () => {
                     this.props.onSelectedDropdownItem
                         && this.props.onSelectedDropdownItem(index);

@@ -21,8 +21,9 @@ interface Props {
     defaultValue?: string;
     mask?: string;
     autocomplete?: boolean;
-    mb0?: boolean;
-    mb16?: boolean;
+    mbValue?: number | string;
+    fluid?: boolean;
+    maxLength?: number;
     dropdownItems?: string[];
     dropdownItemsVisible?: boolean;
     error?: boolean;
@@ -30,6 +31,7 @@ interface Props {
     onInput?: (value: string, noMask: string) => void;
     onFocusChanged?: (isActive: boolean) => void;
     onSelectedDropdownItem?: (index: number) => void;
+    overrideInputSettings?: React.HTMLAttributes<HTMLInputElement>;
 }
 interface State {
     value: string;
