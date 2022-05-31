@@ -123,7 +123,15 @@ export default class FormInput extends React.Component<Props, State> {
     }
 
     private onInput = (event: React.FormEvent<HTMLInputElement>) => {
-        const value = event.currentTarget.value;
+        const value = (() => {
+            var sourceValue = event.currentTarget.value;
+            
+            if (this.props.inputMode === "numeric") {
+                return sourceValue.replace(/\D/g, "");
+            } else {
+                return sourceValue;
+            }
+        })();
         this.setState({
             value
         });
