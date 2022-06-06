@@ -38,7 +38,15 @@ class FormInput extends react_1.default.Component {
             ].join(" ");
         };
         this.onInput = (event) => {
-            const value = event.currentTarget.value;
+            const value = (() => {
+                var sourceValue = event.currentTarget.value;
+                if (this.props.inputMode === "numeric") {
+                    return sourceValue.replace(/\D/g, "");
+                }
+                else {
+                    return sourceValue;
+                }
+            })();
             this.setState({
                 value
             });
@@ -70,7 +78,7 @@ class FormInput extends react_1.default.Component {
         }
     }
     render() {
-        var _a;
+        var _a, _b;
         return (react_1.default.createElement("div", { className: this.getContainerClasses() },
             react_1.default.createElement("label", { className: this.getLabelClasses(), htmlFor: this.props.inputId },
                 react_1.default.createElement("span", null, this.props.label),
@@ -88,7 +96,7 @@ class FormInput extends react_1.default.Component {
                     this.props.onSelectedDropdownItem
                         && this.props.onSelectedDropdownItem(index);
                 } }, item))))),
-            this.props.error && (react_1.default.createElement("div", { className: "error-message" }, this.props.errorMessage))));
+            this.props.error && ((_b = this.props.errorMessage) !== null && _b !== void 0 ? _b : "").length > 0 && (react_1.default.createElement("div", { className: "error-message" }, this.props.errorMessage))));
     }
 }
 exports.default = FormInput;
