@@ -80,7 +80,7 @@ export default class FormInput extends React.Component<Props, State> {
                     </ul>
                 )}
                 
-                {this.props.error && (
+                {this.props.error && (this.props.errorMessage ?? "").length > 0 && (
                     <div className="error-message">
                         {this.props.errorMessage}
                     </div>
