@@ -16,6 +16,14 @@ export default class FormInput extends React.Component<Props, State> {
         }
     }
 
+    componentDidUpdate(previousProps: Props, previousState: State) {
+        if (this.props.mask !== previousProps.mask) {
+            if (this.props.mask) {
+                Inputmask(this.props.mask).mask(this.props.inputId);
+            }
+        }
+    }
+
     render() {
         return (
             <div className={this.getContainerClasses()}>
@@ -46,6 +54,7 @@ export default class FormInput extends React.Component<Props, State> {
                     placeholder={this.props.placeholder}
                     value={this.state.value}
                     autoComplete={this.props.autocomplete ? "on" : "new-password"}
+                    maxLength={this.props.maxLength}
                     onInput={this.onInput}
                     onPaste={this.onInput}
                     onFocus={() => {
@@ -124,13 +133,20 @@ export default class FormInput extends React.Component<Props, State> {
 
     private onInput = (event: React.FormEvent<HTMLInputElement>) => {
         const value = (() => {
-            var sourceValue = event.currentTarget.value;
+            var result = event.currentTarget.value;
             
             if (this.props.inputMode === "numeric") {
-                return sourceValue.replace(/\D/g, "");
-            } else {
-                return sourceValue;
+                result = result.replace(/\D/g, "");
             }
+
+            if (this.props.maxLength) {
+                result = result.substring(
+                    0,
+                    this.props.maxLength
+                );
+            }
+
+            return result;
         })();
         this.setState({
             value
